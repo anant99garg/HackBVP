@@ -37,22 +37,28 @@
                 <div class="col s6" id="details">
 
                     <div class="container">
-                        
+                        <div id="hospital">
+
+                        </div>
                         <!-- Loop start -->
-                        <div class="card">
+                        <!-- <div class="card">
                             <div class="card-content">
+<<<<<<< HEAD
                             <span class="card-title red-text"id="detail">
+=======
+                            <span class="card-title red-text" id="affected_name" >
+>>>>>>> 9efb50c5b1bd2cb147b873bfba12d05dddb0fe23
                                 NAME_OF_AFFECTED_HOSPITAL
                             </span>
-                                AFFECTED HOSPITAL ADDRESS
                                 <hr>
-                                Suggested move to: <span class="green-text">NAME_OF_NEARBY_HOSPITAL</span> <br>
+                                Suggested move to: <span class="green-text" id="unaffected_name">NAME_OF_NEARBY_HOSPITAL</span> <br>
                                 MOVING_TO_ADDRESS <br> <br>
-                                Distance to suggested hospital: DISTANCE (in KM)<br>
+                                Distance to suggested hospital: <span id="distance"> </span> KM
+                                <br>
                                 Total Patients: 122 <br>
                                 Critical Patients: <span class="red-text">445</span>
                             </div>
-                        </div>
+                        </div> -->
                         
                         <!-- Loop end -->
 
@@ -116,11 +122,7 @@
                         lng: "77.001183"
                     },
             
-                    {
-                        name: "32 Smile Stone Dental Clinic, New Delhi, Delhi, India",
-                        lat: "28.575552",
-                        lng: "77.262192"
-                    },
+                   
             
                     {
                         name: "Veterinary Polyclinic, Hoshiarpur, Punjab, India",
@@ -159,7 +161,6 @@
                     }
                 ];
             
-                non_affected = [];
             
                 let rad = function(x) {
                     return x * Math.PI / 180;
@@ -204,7 +205,31 @@
             
                     return distance_array;
                 }
-            let distance_array = getMinDistanceArray(affected, non_affected)
+            let distance_array = getMinDistanceArray(affected, non_affected);
+            
+           distance_array.map(item => {
+            let NAME_OF_AFFECTED_HOSPITAL =item.name;
+                let NAME_OF_NEARBY_HOSPITAL = item.nearByPlace;
+                let distance = item.distance;
+                
+                output = ` <div class="card">
+                            <div class="card-content">
+                            <span class="card-title red-text" id="affected_name" >
+                                ${NAME_OF_AFFECTED_HOSPITAL}
+                            </span>
+                                <hr>
+                                Suggested move to: <span class="green-text" id="unaffected_name">${NAME_OF_NEARBY_HOSPITAL}</span> <br>
+                                MOVING_TO_ADDRESS <br> <br>
+                                Distance to suggested hospital: <span id="distance">${distance}</span> KM
+                                <br>
+                                Total Patients: 122 <br>
+                                Critical Patients: <span class="red-text">445</span>
+                            </div>
+                        </div>`;
+                    
+                document.getElementById("hospital").innerHTML += output;
+           })
+
                 console.log(distance_array);
             
             </script>
