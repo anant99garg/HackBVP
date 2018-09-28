@@ -74,6 +74,9 @@ app.post("/login", passport.authenticate("local",
 app.get("/signup",function(req, res){
     res.render("signup")
 })
+// app.get("/dash",function(req, res){
+//     res.render("dashboard")
+// })
 app.post("/signup", function (req, res) {
     var username = req.body.username;
     var name = req.body.name;
@@ -125,10 +128,6 @@ organisationData.create(newuser, function(err, organisationD){
     res.redirect('/org');
 });
 });
-
-
-
-
 
 app.get("/logout", function(req, res){
     req.logout();
