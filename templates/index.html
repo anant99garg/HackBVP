@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DAWA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #map {
+            height: 50vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Make map half screen -->
+<!-- list of hospital to shift -->
+<!-- parallel sign in process -->
+
+<main>
+    <div id="map"></div>
+
+    <div class="row">
+        <div class="col s12 m3 push-m9">
+            <div class="">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Sign IN</span>
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="user_id" type="text" class="validate">
+                                        <label for="user_id">User ID</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="password" type="text" class="validate">
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <div class="col s12">
+                                        <button class="btn btn-flat btn-large blue white-text"> SIGN iN</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Sign UP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m9 pull-m3">
+            <div class="row">
+
+                <div class="col s12 m6">
+                    <h5 class="red-text">
+                        Affected Hospitals
+                    </h5>
+
+                    <div class="card red lighten-4">
+                        <div class="card-content black-text">
+                            <div class="card-title">
+                                BATRA HOSPITAL AND MEDICAL RESEARCH CENTRE
+                            </div>
+                            <div class="row">
+                                <span style="font-size: 1.3rem">
+                                    <b>
+                                        1,MEHRAULI BADARPUR ROAD,TUGHLAQABAD INSTITUTIONAL AREA,NEW DELHI-110062
+                                    </b>
+                                </span>
+                                <br>
+                                <br>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>
+                                            Name
+                                        </td>
+                                        <td>
+                                            Medical Info
+                                        </td>
+                                        <td>
+                                            Critical
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            FAISAL MANZER
+                                        </td>
+                                        <td>
+                                            LUNGS PROBLEM
+                                        </td>
+                                        <td>
+                                            NO
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            ANANT GARG
+                                        </td>
+                                        <td>
+                                            VIRAL FEVER
+                                        </td>
+                                        <td>
+                                            NO
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col s12 m6">
+                    <h5 class="green-text">
+                        Non Affected Hospitals
+                    </h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    // Initialize and add the map
+    function initMap() {
+        // The location of Uluru
+        let uluru = {lat: 28.675472, lng: 77.112836};
+        // The map, centered at Uluru
+        let map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 15, center: uluru});
+        // The marker, positioned at Uluru
+        let marker = new google.maps.Marker({position: uluru, map: map});
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArIc5CsWpfhHO80jr1vhzCslESf0db97w&callback=initMap">
+</script>
+</body>
+</html>
