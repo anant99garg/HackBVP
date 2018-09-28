@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DAVA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -23,242 +23,218 @@
         }
     </style>
 </head>
-<body>
-        <% include header.ejs %>
-<div>
 
+<body>
+    <% include header.ejs %>
     <div class="row">
         <div class="col s12" id="">
-
             <div class="row">
                 <div class="col s6 z-depth-4" id="map">
                 </div>
-
                 <div class="col s6" id="details">
-
                     <div class="container">
                         <div id="hospital">
-
                         </div>
-                        <!-- Loop start -->
-                        <!-- <div class="card">
-                            <div class="card-content">
-                            <span class="card-title red-text" id="affected_name" >
-                                NAME_OF_AFFECTED_HOSPITAL
-                            </span>
-                                <hr>
-                                Suggested move to: <span class="green-text" id="unaffected_name">NAME_OF_NEARBY_HOSPITAL</span> <br>
-                                MOVING_TO_ADDRESS <br> <br>
-                                Distance to suggested hospital: <span id="distance"> </span> KM
-                                <br>
-                                Total Patients: 122 <br>
-                                Critical Patients: <span class="red-text">445</span>
-                            </div>
-                        </div> -->
-                        
-                        <!-- Loop end -->
-
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
-    <div class="row">
 
-    </div>
-</div>
-<script
-        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        crossorigin="anonymous"></script>
-<script>
-    function initMap() {
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script>
+        function initMap() {
 
-        let api_key = "AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg";
+            let api_key = "AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg";
 
-        let uluru = {lat: 28.675472, lng: 77.112836};
-        // The map, centered at Uluru
-        let map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 15, center: uluru});
-        // The marker, positioned at Uluru
-        let marker = new google.maps.Marker({position: uluru, map: map});
-    }
+            let uluru = {
+                lat: 28.675472,
+                lng: 77.112836
+            };
+            // The map, centered at Uluru
+            let map = new google.maps.Map(
+                document.getElementById('map'), {
+                    zoom: 15,
+                    center: uluru
+                });
+            // The marker, positioned at Uluru
+            let marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg&callback=initMap"></script>
+    <script>
+        let affected = [{
+                name: "Advaita Hospitals",
+                lat: "28.653229",
+                lng: "77.308601",
+            },
 
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg&callback=initMap"></script>
-        <script>
+            {
+                name: "Holy Family Hospital",
+                lat: "28.562142",
+                lng: "77.275080",
+            },
 
-                let affected = [
-                    {
-                        name: "Advaita Hospitals",
-                        lat: "28.653229",
-                        lng: "77.308601",
-                    },
-            
-                    {
-                        name: "Holy Family Hospital",
-                        lat: "28.562142",
-                        lng: "77.275080",
-                    },
-            
-                    {
-                        name: "Sunrise Hospital",
-                        lat: "28.577196 ",
-                        lng: "77.265955",
-                    },
-                    {
-                        name: "Indraprasth Apollo Hospital ",
-                        lat: "28.541777",
-                        lng: "77.283254",
-                    },
-                    {
-                        name: "Jeewan Hospital",
-                        lat: "28.578496",
-                        lng: "77.259264",
-                    },
-                    {
-                        name: "Bharat Nagar Lions Hospital",
-                        lat: "28.572477",
-                        lng: "77.266050",
-                    },
-                    {
-                        name: "Lions Kidney Hospitals",
-                        lat: "28.571760",
-                        lng: "77.274271",
-                    },
-                    {
-                        name: "Bansal Hospital",
-                        lat: "28.564212",
-                        lng: "77.271604",
-                    },
-                ];
-            
-                let non_affected = [
-                    {
-                        name: "AIIMS",
-                        lat: "28.708257",
-                        lng: "77.103238"
-                    },
-            
-                   
-            
-                    {
-                        name: "Avantika Multispeciality Hospital",
-                        lat: "31.524620",
-                        lng: "75.902008"
-                    },
-            
-                    {
-                        name: "Jaipur Golden Hospital",
-                        lat: "28.697795",
-                        lng: "77.109917"
-                    },
-            
-                    {
-                        name: "Navjeevan Hospital",
-                        lat: "28.695089",
-                        lng: "77.108788"
-                    },
-            
-                    {
-                        name: "Bhagwan Mahavir Hospital",
-                        lat: "28.688492",
-                        lng: "77.118036"
-                    },
-            
-                    {
-                        name: "ECHS Polyclinic",
-                        lat: "28.680512",
-                        lng: "77.114258"
-                    },
-            
-                    {
-                        name: "Sanjay Gandhi Memorial Hospital",
-                        lat: "28.694688",
-                        lng: "77.080526"
-                    },
-                    {
-                        name: "Bhatia Global Hospital",
-                        lat: "28.665894",
-                        lng: "77.082405"
-                    },
-                    {
-                        name: "Sehgal Neo Hospital",
-                        lat: "28.658336",
-                        lng: "77.091438"
-                    },
-                    {
-                        name: "Khetarpal Hospital",
-                        lat: "28.653625",
-                        lng: "77.112720"
-                    },
+            {
+                name: "Sunrise Hospital",
+                lat: "28.577196 ",
+                lng: "77.265955",
+            },
+            {
+                name: "Indraprasth Apollo Hospital ",
+                lat: "28.541777",
+                lng: "77.283254",
+            },
+            {
+                name: "Jeewan Hospital",
+                lat: "28.578496",
+                lng: "77.259264",
+            },
+            {
+                name: "Bharat Nagar Lions Hospital",
+                lat: "28.572477",
+                lng: "77.266050",
+            },
+            {
+                name: "Lions Kidney Hospitals",
+                lat: "28.571760",
+                lng: "77.274271",
+            },
+            {
+                name: "Bansal Hospital",
+                lat: "28.564212",
+                lng: "77.271604",
+            },
+        ];
 
-                     {
-                        name: "Kukreja Hospital and Heart Centre",
-                        lat: "28.647244",
-                        lng: "77.117342"
-                    }, {
-                        name: "Aman Hospital",
-                        lat: "28.644429",
-                        lng: "77.112572"
-                    },
-                ];
-            
-            
-                let rad = function(x) {
-                    return x * Math.PI / 180;
+        let non_affected = [{
+                name: "AIIMS",
+                lat: "28.708257",
+                lng: "77.103238"
+            },
+
+
+
+            {
+                name: "Avantika Multispeciality Hospital",
+                lat: "31.524620",
+                lng: "75.902008"
+            },
+
+            {
+                name: "Jaipur Golden Hospital",
+                lat: "28.697795",
+                lng: "77.109917"
+            },
+
+            {
+                name: "Navjeevan Hospital",
+                lat: "28.695089",
+                lng: "77.108788"
+            },
+
+            {
+                name: "Bhagwan Mahavir Hospital",
+                lat: "28.688492",
+                lng: "77.118036"
+            },
+
+            {
+                name: "ECHS Polyclinic",
+                lat: "28.680512",
+                lng: "77.114258"
+            },
+
+            {
+                name: "Sanjay Gandhi Memorial Hospital",
+                lat: "28.694688",
+                lng: "77.080526"
+            },
+            {
+                name: "Bhatia Global Hospital",
+                lat: "28.665894",
+                lng: "77.082405"
+            },
+            {
+                name: "Sehgal Neo Hospital",
+                lat: "28.658336",
+                lng: "77.091438"
+            },
+            {
+                name: "Khetarpal Hospital",
+                lat: "28.653625",
+                lng: "77.112720"
+            },
+
+            {
+                name: "Kukreja Hospital and Heart Centre",
+                lat: "28.647244",
+                lng: "77.117342"
+            }, {
+                name: "Aman Hospital",
+                lat: "28.644429",
+                lng: "77.112572"
+            },
+        ];
+
+
+        let rad = function (x) {
+            return x * Math.PI / 180;
+        };
+
+
+        let getDistance = function (p1, p2) {
+            let R = 6378137; // Earth’s mean radius in meter
+            let dLat = rad(p2.lat - p1.lat);
+            let dLong = rad(p2.lng - p1.lng);
+            let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat)) *
+                Math.sin(dLong / 2) * Math.sin(dLong / 2);
+            let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c; // returns the distance in meter
+        };
+
+
+        function getMinDistanceArray(affected_array, non_affected_array) {
+
+            let distance_array = [];
+
+            affected_array.map(affected_place => {
+
+                let min_distance_place = {
+                    name: affected_place.name,
+                    distance: Infinity,
+                    nearByPlace: "NO PLACE FOUND"
                 };
-            
-            
-                let getDistance = function(p1, p2) {
-                    let R = 6378137; // Earth’s mean radius in meter
-                    let dLat = rad(p2.lat - p1.lat);
-                    let dLong = rad(p2.lng - p1.lng);
-                    let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                        Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat)) *
-                        Math.sin(dLong / 2) * Math.sin(dLong / 2);
-                    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                    return R * c; // returns the distance in meter
-                };
-            
-            
-                function getMinDistanceArray(affected_array, non_affected_array) {
-            
-                    let distance_array = [];
-            
-                    affected_array.map(affected_place => {
-            
-                        let min_distance_place = {
-                            name: affected_place.name,
-                            distance: Infinity,
-                            nearByPlace: "NO PLACE FOUND"
-                        };
-            
-                        non_affected_array.map(non_affected_place => {
-            
-                            let calculated_distance = Math.round(getDistance(affected_place, non_affected_place)/1000);
-                            if(calculated_distance<min_distance_place.distance){
-                                min_distance_place.distance = calculated_distance;
-                                min_distance_place.nearByPlace = non_affected_place.name
-                            }
-                        });
-            
-                        distance_array.push(min_distance_place)
-                    });
-            
-                    return distance_array;
-                }
-            let distance_array = getMinDistanceArray(affected, non_affected);
-            
-           distance_array.map(item => {
-            let NAME_OF_AFFECTED_HOSPITAL =item.name;
-                let NAME_OF_NEARBY_HOSPITAL = item.nearByPlace;
-                let distance = item.distance;
-                
-                output = ` <div class="card">
+
+                non_affected_array.map(non_affected_place => {
+
+                    let calculated_distance = Math.round(getDistance(affected_place, non_affected_place) /
+                        1000);
+                    if (calculated_distance < min_distance_place.distance) {
+                        min_distance_place.distance = calculated_distance;
+                        min_distance_place.nearByPlace = non_affected_place.name
+                    }
+                });
+
+                distance_array.push(min_distance_place)
+            });
+
+            return distance_array;
+        }
+        let distance_array = getMinDistanceArray(affected, non_affected);
+
+        distance_array.map(item => {
+            let NAME_OF_AFFECTED_HOSPITAL = item.name;
+            let NAME_OF_NEARBY_HOSPITAL = item.nearByPlace;
+            let distance = item.distance;
+
+            output =
+                ` <div class="card">
                             <div class="card-content">
                             <span class="card-title red-text" id="affected_name" >
                                 ${NAME_OF_AFFECTED_HOSPITAL}
@@ -272,12 +248,12 @@
                                 Critical Patients: <span class="red-text">445</span>
                             </div>
                         </div>`;
-                    
-                document.getElementById("hospital").innerHTML += output;
-           })
 
-                console.log(distance_array);
-            
-            </script>
+            document.getElementById("hospital").innerHTML += output;
+        })
+
+        console.log(distance_array);
+    </script>
 </body>
+
 </html>
