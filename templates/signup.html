@@ -20,13 +20,11 @@
 
         body {
             display: flex;
-            align-items: center;
             justify-content: center;
 
             width: 100vw;
             height: 100vh;
 
-            overflow: hidden;
         }
 
         @-webkit-keyframes AnimationName {
@@ -71,11 +69,11 @@
 
 <div>
     <div class="row">
-        <div class="col s12 m10 offset-m2">
+        <div class="col s12 m6 offset-m3">
             <div class="card">
                 <div class="card-content">
                     <span class="card-title">
-                        Sign IN
+                        Sign UP
                     </span>
                     <div class="row">
                         <form class="col s12">
@@ -92,11 +90,35 @@
                                     <textarea id="address" class="materialize-textarea"></textarea>
                                     <label for="address">Full Address</label>
                                 </div>
-                                <div class="col s12" id="map" style="height: 300px">
+                                <div class="input-field col s12 m6">
+                                    <input id="phone" type="text" class="validate">
+                                    <label for="phone">Phone</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="email" type="text" class="validate">
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="col s12" style="height: 300px" id="map">
 
                                 </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="lan" type="text" class="validate">
+                                    <label for="lan">Latitude</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="lag" type="text" class="validate">
+                                    <label for="lag">Longitude</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="password" type="password" class="validate">
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="c_password" type="password" class="validate">
+                                    <label for="c_password">Confirm Password</label>
+                                </div>
                                 <div class="col s12">
-                                    <button class="btn btn-flat btn-large blue white-text"> SIGN iN</button>
+                                    <button class="btn btn-flat btn-large blue white-text"> SIGN UP</button>
                                 </div>
                             </div>
                         </form>
@@ -106,9 +128,57 @@
         </div>
     </div>
 </div>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+<script>
+    function initMap() {
+        // The location of Uluru
+        let uluru = {lat: 28.675472, lng: 77.112836};
+        // The map, centered at Uluru
+        let map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 15, center: uluru});
+        // The marker, positioned at Uluru
+        let marker = new google.maps.Marker({position: uluru, map: map});
+    }
 
+    marker = new google.maps.Marker(
+        {
+            map:map,
+            draggable:true,
+            animation: google.maps.Animation.DROP,
+            position: results[0].geometry.location
+        });
+    google.maps.event.addListener(marker, 'dragend', function()
+    {
+        geocodePosition(marker.getPosition());
+    });
+
+    function geocodePosition(pos)
+    {
+        geocoder = new google.maps.Geocoder();
+        geocoder.geocode
+        ({
+                latLng: pos
+            },
+            function(results, status)
+            {
+                if (status == google.maps.GeocoderStatus.OK)
+                {
+                    $("#mapSearchInput").val(results[0].formatted_address);
+                    $("#mapErrorMsg").hide(100);
+                }
+                else
+                {
+                    $("#mapErrorMsg").html('Cannot determine address at this location.'+status).show(100);
+                }
+            }
+        );
+    }
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArIc5CsWpfhHO80jr1vhzCslESf0db97w&callback=initialize"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArIc5CsWpfhHO80jr1vhzCslESf0db97w&callback=initMap"></script>
 </body>
 </html>
