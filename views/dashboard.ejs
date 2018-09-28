@@ -6,15 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <style>
-    body{
-      /* overflow: hidden; */
-    }
-    #patient{
-      overflow: scroll;
-      height: calc(100vh - 60px);
-    }
-  </style>
 
     <title>Document</title>
 </head>
@@ -23,31 +14,60 @@
         <% include header.ejs %>
 
 <main>
-  
+    <div class="container">
     <div class="row">
-        <div class="col s12 m8" >
+        <div class="col s12 m8">
                 <h3>
                     All Admitted Patient
                 </h3>
 
-                <div class="row" id="patient">
-                    <ul class="collection">
-                        <%organisationD2.forEach(function(organisationD3){%>
-                       <li class="collection-item avatar">
-                         <span class="title"><%= organisationD3.namep%></span>
-                         <p>Guardian Name: <%= organisationD3.guardianname%> <br>
-                          Phone Number: <%= organisationD3.phonenumberg%>
-                             <br>
-                          Critical: <%= organisationD3.critical%>
-                         </p>
-                         <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                       </li>
-                       
-                       <%})%> 
-                       </ul>
-          
-                
-            </div>
+                <div class="row">
+                    <div class="col s12 m6">
+
+                        <!--card-->
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="card-title">
+                                     NAME_OF_PATIENT
+                                </span>
+                                Guardian Name: NAME_OF_GUARDIAN
+                                <br>
+                                Phone Number: PHONE_NUMBER
+                                <br>
+                                Critical: YES_NO
+                            </div>
+                            <div class="card-action">
+                                <a href="#" class="blue-text">Discharge</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col s12 m6">
+
+                        <!--card-->
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="card-title">
+                                     NAME_OF_PATIENT
+                                </span>
+                                Guardian Name: NAME_OF_GUARDIAN
+                                <br>
+                                Phone Number: PHONE_NUMBER
+                                <br>
+                                Critical: YES_NO
+                            </div>
+                            <div class="card-action">
+                                <a href="#" class="blue-text">Discharge</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
         </div>
         <div class="col s12 m4">
 
@@ -64,32 +84,32 @@
                                      Admit New patient
                                 </span>
                     <div class="row">
-                        <form class="col s12" action="/org" method="POST">
+                        <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="name" type="text" name="namep" class="validate">
+                                    <input id="name" type="text" class="validate">
                                     <label for="name">Name</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input id="g_name" type="text" name="guardianname" class="validate">
+                                    <input id="g_name" type="text" class="validate">
                                     <label for="g_name">Guardian Name</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input id="phone" type="text" name="phonenumberg" class="validate">
+                                    <input id="phone" type="text" class="validate">
                                     <label for="phone">Phone Number</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input id="state" type="text" name="condition" class="validate">
+                                    <input id="state" type="text" class="validate">
                                     <label for="state">General Medical Condition</label>
                                 </div>
                                 <div class="col s12">
                                     Critical:
                                     <label>
-                                        <input name="critical" type="radio" name="critical" checked/>
+                                        <input name="critical" type="radio" checked/>
                                         <span>yes</span>
                                     </label>
                                     <label>
-                                        <input name="critical" type="radio" name="critical" checked/>
+                                        <input name="critical" type="radio" checked/>
                                         <span>no</span>
                                     </label>
                                     <br>
@@ -107,8 +127,8 @@
 
 
         </div>
-    
-  
+    </div>
+    </div>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
