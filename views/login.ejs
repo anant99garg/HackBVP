@@ -1,45 +1,22 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Login</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  <style>
-    body {
-      display: flex;
-      min-height: 100vh;
-      flex-direction: column;
-    }
+    <meta charset="UTF-8">
+    <title>DAWA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- <style>
+        body {
+            margin: 0;
+        }
 
-    main {
-      flex: 1 0 auto;
-    }
-
-    body {
-      background: #fff;
-    }
-
-    .input-field input[type=date]:focus + label,
-    .input-field input[type=text]:focus + label,
-    .input-field input[type=email]:focus + label,
-    .input-field input[type=password]:focus + label {
-      color: #e91e63;
-    }
-
-    .input-field input[type=date]:focus,
-    .input-field input[type=text]:focus,
-    .input-field input[type=email]:focus,
-    .input-field input[type=password]:focus {
-      border-bottom: 2px solid #e91e63;
-      box-shadow: none;
-    }
-  </style>
+        #map {
+            height: 50vh;
+            width: 100vw;
+        }
+    </style> -->
 </head>
-
 <body>
+<<<<<<< HEAD
 
     <% include header.ejs %>
   <div class="section"></div>
@@ -49,48 +26,69 @@
 
       <h5 class="indigo-text">Please, login into your account</h5>
       <div class="section"></div>
+=======
+>>>>>>> 792886d6cf2891897348fe9068c066ec5eedddac
 
-      <div class="container">
-        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+<!-- Make map half screen -->
+<!-- list of hospital to shift -->
+<!-- parallel sign in process -->
 
-          <form class="col s12" method="post">
-            <div class='row'>
-              <div class='col s12'>
-              </div>
+<main>
+    <div id="map"></div>
+
+    <div class="row">
+        <div class="col s12 m3 push-m9">
+            <div class="">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Sign IN</span>
+                        <div class="row">
+                            <form class="col s12" action="/login" method="POST">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="user_id" type="text" name="username" class="validate">
+                                        <label for="user_id">User ID</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="password" type="text" name="password" class="validate">
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <div class="col s12">
+                                        <button class="btn btn-flat btn-large blue white-text"> SIGN iN</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a href="/signup">Sign UP</a>
+                    </div>
+                </div>
             </div>
-
-            <div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='email' name='email' id='email' />
-                <label for='email'>Enter your email</label>
-              </div>
-            </div>
-
-            <div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='password' name='password' id='password' />
-                <label for='password'>Enter your password</label>
-              </div>
-            </div>
-
-            <br />
-            <center>
-              <div class='row'>
-                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</button>
-              </div>
-            </center>
-          </form>
         </div>
-      </div>
-      <a href="#!">Create account</a>
-    </center>
+        <div class="col s12 m9 pull-m3">
+            <div class="row">
 
-    <div class="section"></div>
-    <div class="section"></div>
-  </main>
+            </div>
+        </div>
+    </div>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- <script>
+    // Initialize and add the map
+    function initMap() {
+        // The location of Uluru
+        let uluru = {lat: 28.675472, lng: 77.112836};
+        // The map, centered at Uluru
+        let map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 15, center: uluru});
+        // The marker, positioned at Uluru
+        let marker = new google.maps.Marker({position: uluru, map: map});
+    }
+</script> -->
+<!-- <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArIc5CsWpfhHO80jr1vhzCslESf0db97w&callback=initMap">
+</script> -->
 </body>
-
 </html>
