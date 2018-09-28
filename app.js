@@ -10,7 +10,7 @@ var express         = require('express'),
     multer          = require('multer');
 var morgan          = require('morgan');
 
-var organisationData = require("./models/organisation");
+var organisationData = require("./models/org");
 var NewUser = require("./models/user");
 
 
@@ -101,20 +101,28 @@ NewUser.register(new_user,req.body.password, function(err, newUser){
 
 
 app.get("/org",function(req, res){
-    res.render("org")
+    organisationData.find({},function(err, organisationD1){
+        if (err){
+            res.render('index');
+        }else{
+            console.log(organisationD1);
+            res.render('org',{organisationD2:organisationD1});
+        };
+    });
 });
 app.post("/org", function (req, res) {
-    var name = req.body.name;
+    var namep = req.body.namep;
     var condition = req.body.condition;
     var guardianname = req.body.guardianname;
-    var phonenumber = req.body.phonenumber; 
-    var new_user ={name:name, condition:condition,guardianname:guardianname,phonenumber:phonenumber};
-organisationData.create(new_user, function(err, organisationD){
+    var phonenumberg = req.body.phonenumberg; 
+    var critical = req.body.critical; 
+    var newuser ={namep:namep, condition:condition,guardianname:guardianname,phonenumberg:phonenumberg,critical:critical};
+organisationData.create(newuser, function(err, organisationD){
     if (err){
         console.log(err);
         res.redirect("Something went wrong");
     } 
-    res.redirect('/org',{organisationD:organisationD})
+    res.redirect('/org');
 });
 });
 
