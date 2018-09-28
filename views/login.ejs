@@ -1,75 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>DAWA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-   
+
 </head>
+
 <body>
 
-        <nav class="grey darken-3" >
-                <div class="container">
-                   <div class="nav-wrapper">
-                          <a href="/" class="brand-logo">DAVA</a>
-                          <ul class="right hide-on-med-and-down">
-                            <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="#!">login</a></li>
-                            <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="/signup">signup </a></li>
-                          </ul>
-                  </div>
-                </div>
-              </nav>
- 
+    <nav class="grey darken-3">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo">DAVA</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="waves-effect waves-light btn blue-grey lighten-3" href="#!">login</a></li>
+                    <li><a class="waves-effect waves-light btn blue-grey lighten-3" href="/signup">signup </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
 
     <div class="container">
-	   <div class="row">
-        <div class="col s12 m6 offset-m2">
-            <div class="">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title blue-text lighten-2">Please, login into your account</span>
-                        <div class="row">
-                            <form class="col s12" action="/login" method="POST">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input id="user_id" type="text" name="username" class="validate">
-                                        <label for="user_id">User ID</label>
+        <div class="row">
+            <div class="col s12 m6 offset-m2">
+                <div class="">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title blue-text lighten-2">Please, login into your account</span>
+                            <div class="row">
+                                <form class="col s12" action="/login" method="POST">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="user_id" type="text" name="username" class="validate">
+                                            <label for="user_id">User ID</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="password" type="password" name="password" class="validate">
+                                            <label for="password">Password</label>
+                                        </div>
+                                        <div class="col s12">
+                                            <button class="btn btn-flat btn-large blue white-text"> Log In</button>
+                                        </div>
                                     </div>
-                                    <div class="input-field col s12">
-                                        <input id="password" type="password" name="password" class="validate">
-                                        <label for="password">Password</label>
-                                    </div>
-                                    <div class="col s12">
-                                        <button class="btn btn-flat btn-large blue white-text"> Log In</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-action ">
-                        <a href="/signup"class="blue-text lighten-2">Sign Up</a>
+                        <div class="card-action ">
+                            <a href="/signup" class="blue-text lighten-2">Sign Up</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-	</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<!-- <script>
-    // Initialize and add the map
-    function initMap() {
-        // The location of Uluru
-        let uluru = {lat: 28.675472, lng: 77.112836};
-        // The map, centered at Uluru
-        let map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 15, center: uluru});
-        // The marker, positioned at Uluru
-        let marker = new google.maps.Marker({position: uluru, map: map});
-    }
-</script> -->
-<!-- <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArIc5CsWpfhHO80jr1vhzCslESf0db97w&callback=initMap">
-</script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

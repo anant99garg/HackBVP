@@ -1,4 +1,5 @@
 <nav class="grey darken-3">
+<<<<<<< HEAD
         <div class="container">
             <%if(userU){%>
            <div class="nav-wrapper">
@@ -24,3 +25,27 @@
       <%}%>
         </div>
       </nav>
+=======
+  <div class="container">
+    <%if(userU){%>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Digital Assimilation and Virtual Assistant</a>
+      <ul class="right hide-on-med-and-down">
+
+        <%= userU.organisation %>
+        <li><a class="waves-effect waves-light btn blue-grey lighten-3" href="/logout">logout</a></li>
+        <li><a class="waves-effect waves-light btn blue-grey lighten-3" href="signup">signup </a></li>
+      </ul>
+    </div>
+    <%}else{%>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">DAVA</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="waves-effect waves-light btn blue-grey lighten-3" href="/login">login</a></li>
+        <li><a class="waves-effect waves-light btn blue-grey lighten-3" href="/signup">signup </a></li>
+      </ul>
+    </div>
+    <%}%>
+  </div>
+</nav>
+>>>>>>> 69bc930fec854fa933cf1eb676c1a5a4fbf8a45e
