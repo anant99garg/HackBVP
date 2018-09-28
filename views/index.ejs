@@ -35,30 +35,6 @@
                     <div class="container">
                         <div id="hospital">
                         </div>
-<<<<<<< HEAD
-                        <!-- Loop start -->
-                        <!-- <div class="card">
-                            <div class="card-content">
-<<<<<<< HEAD
-                            <span class="card-title red-text"id="detail">
-=======
-                            <span class="card-title red-text" id="affected_name"
-                                NAME_OF_AFFECTED_HOSPITAL
-                            </span>
-                                <hr>
-                                Suggested move to: <span class="green-text" id="unaffected_name">NAME_OF_NEARBY_HOSPITAL</span> <br>
-                                MOVING_TO_ADDRESS <br> <br>
-                                Distance to suggested hospital: <span id="distance"> </span> KM
-                                <br>
-                                Total Patients: 122 <br>
-                                Critical Patients: <span class="red-text">445</span>
-                            </div>
-                        </div> -->
-                        
-                        <!-- Loop end -->
-
-=======
->>>>>>> 69bc930fec854fa933cf1eb676c1a5a4fbf8a45e
                     </div>
                 </div>
             </div>
@@ -258,20 +234,20 @@
             let distance = item.distance;
 
             output =
-                ` <div class="card">
-                            <div class="card-content">
-                            <span class="card-title red-text" id="affected_name" >
-                                ${NAME_OF_AFFECTED_HOSPITAL}
-                            </span>
-                                <hr>
-                                Suggested move to: <span class="green-text" id="unaffected_name">${NAME_OF_NEARBY_HOSPITAL}</span> <br>
-                                MOVING_TO_ADDRESS <br> <br>
-                                Distance to suggested hospital: <span id="distance">${distance}</span> KM
-                                <br>
-                                Total Patients: 122 <br>
-                                Critical Patients: <span class="red-text">445</span>
-                            </div>
-                        </div>`;
+                ` <ul class="collapsible">
+                        <li>
+                        <div class="collapsible-header">${NAME_OF_AFFECTED_HOSPITAL}</div>
+                        <div class="collapsible-body"><span>
+                                                    Suggested move to: <span class="green-text" id="unaffected_name">${NAME_OF_NEARBY_HOSPITAL}</span> <br>
+                                                    MOVING_TO_ADDRESS <br>
+                                                    Distance to suggested hospital: <span id="distance">${distance}</span> KM
+                                                    <br>
+                                                    Total Patients: 122 <br>
+                                                    Critical Patients: <span class="red-text">445</span>
+                        </span></div>
+                        </li>
+                        
+                    </ul>`;
 
             document.getElementById("hospital").innerHTML += output;
         })
