@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DAVA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        #map {
+            height: calc(100vh - 70px);
+            margin-top: 5px;
+        }
+
+        #details {
+            height: calc(100vh - 70px);
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+<nav>
+
+</nav>
+<div>
+
+    <div class="row">
+        <div class="col s12" id="">
+
+            <div class="row">
+                <div class="col s6 z-depth-4" id="map">
+                </div>
+
+                <div class="col s6" id="details">
+
+                    <div class="container">
+
+                        <!-- Loop start -->
+                        <div class="card">
+                            <div class="card-content">
+                            <span class="card-title red-text">
+                                NAME_OF_AFFECTED_HOSPITAL
+                            </span>
+                                AFFECTED HOSPITAL ADDRESS
+                                <hr>
+                                Suggested move to: <span class="green-text">NAME_OF_NEARBY_HOSPITAL</span> <br>
+                                MOVING_TO_ADDRESS <br> <br>
+                                Distance to suggested hospital: DISTANCE (in KM)<br>
+                                Total Patients: 122 <br>
+                                Critical Patients: <span class="red-text">445</span>
+                            </div>
+                        </div>
+
+                        <!-- Loop end -->
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        crossorigin="anonymous"></script>
+<script>
+    function initMap() {
+
+        let api_key = "AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg";
+
+        let uluru = {lat: 28.675472, lng: 77.112836};
+        // The map, centered at Uluru
+        let map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 15, center: uluru});
+        // The marker, positioned at Uluru
+        let marker = new google.maps.Marker({position: uluru, map: map});
+    }
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg&callback=initMap"></script>
+</body>
+</html>
