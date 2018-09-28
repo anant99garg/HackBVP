@@ -85,8 +85,10 @@ app.post("/signup", function (req, res) {
     var address = req.body.address;
     var longitude = req.body.longitude;
     var latitude = req.body.latitude;
-    var phonenumber = req.body.phonenumber; 
-    var new_user ={username:username,latitude:latitude,longitude:longitude,name:name, phonenumber:phonenumber,organisation:organisation,email:email,address:address};
+    var phonenumber = req.body.phonenumber;
+    var affected = req.body.affected;
+     
+    var new_user ={username:username,latitude:latitude,longitude:longitude,name:name, phonenumber:phonenumber,affected:affected,organisation:organisation,email:email,address:address};
 NewUser.register(new_user,req.body.password, function(err, newUser){
     if (err){
         console.log(err);
@@ -108,7 +110,7 @@ NewUser.register(new_user,req.body.password, function(err, newUser){
 app.get("/org",isLoggedIn,function(req, res){
     organisationData.find({},function(err, organisationD1){
         if (err){
-            res.render('index');
+            res.redirect('/login');
         }else{
             console.log(organisationD1);
             res.render('org',{organisationD2:organisationD1});
@@ -133,14 +135,14 @@ organisationData.create(newuser, function(err, organisationD){
 
 app.get("/logout", function(req, res){
     req.logout();
-    res.redirect("/");
+    res.redirect("/login");
 });
 ////////////////////////////////
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.redirect("/");
+    res.redirect("/login");
 };
     
 app.listen(process.env.PORT || 7000, function () {

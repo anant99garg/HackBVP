@@ -1,73 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DAVA</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<nav class="grey darken-3">
+        <div class="container">
+           <div class="nav-wrapper">
+                  <a href="#!" class="brand-logo">DAVA</a>
+                  <ul class="right hide-on-med-and-down">
+                      <%if(userU){%>
+                    <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="/logout">logout</a></li>
+                    <%}else{%>
+                      <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="/login">login</a></li>
+                      <%}%>
 
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-
-            width: 100vw;
-            height: 100vh;
-
-        }
-
-        @-webkit-keyframes AnimationName {
-            0% {
-                background-position: 7% 0
-            }
-            50% {
-                background-position: 94% 100%
-            }
-            100% {
-                background-position: 7% 0
-            }
-        }
-
-        @-moz-keyframes AnimationName {
-            0% {
-                background-position: 7% 0
-            }
-            50% {
-                background-position: 94% 100%
-            }
-            100% {
-                background-position: 7% 0
-            }
-        }
-
-        @keyframes AnimationName {
-            0% {
-                background-position: 7% 0
-            }
-            50% {
-                background-position: 94% 100%
-            }
-            100% {
-                background-position: 7% 0
-            }
-        }
-        
-    </style>
-
-</head>
-<body>
-        
-<div>
-        <nav class="grey darken-3">
-                <div class="container">
-                   <div class="nav-wrapper">
-                          <a href="#!" class="brand-logo">DAVA</a>
-                          <ul class="right hide-on-med-and-down">
-                            <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="#!">login</a></li>
-                            <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="#!">signup </a></li>
-                          </ul>
-                  </div>
-                </div>
-              </nav>
+                    <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="#!">signup </a></li>
+                  </ul>
+          </div>
+        </div>
+      </nav>

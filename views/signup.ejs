@@ -79,14 +79,16 @@
             <div class="card" style="background: #e9ecef;">
                 <div class="card-content">
                     <span class="card-title">
-                        Sign UP
+                        Sign Up
                     </span>
                     <div class="row">
                         <form class="col s12" action="/signup" method="POST">
                             <div class="row">
+                                    <input id="affected" type="hidden" name="affected" value="false">
+
                                 <div class="input-field col s12 m6">
                                     <input id="user_id" type="text" name="username" class="validate">
-                                    <label for="user_id">Chose a User ID</label>
+                                    <label for="user_id">Choose a User ID</label>
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <input id="name" type="text" name="organisation" class="validate">
@@ -101,18 +103,18 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input id="email" type="text" name="email" class="validate">
+                                    <input id="email" type="email" name="email" class="validate">
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="col s12" style="height: 300px" id="map">
 
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input id="lat" type="text" name="latitude" class="validate">
+                                    <input id="lat" type="text" name="latitude" class="validate" editable="false">
                                     <label for="lat">Latitude</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input id="lng" type="text" name="longitude" class="validate">
+                                    <input id="lng" type="text" name="longitude" class="validate" editable="false">
                                     <label for="lng">Longitude</label>
                                 </div>
                                 <div class="input-field col s12 m6">

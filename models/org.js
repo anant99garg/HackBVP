@@ -6,7 +6,9 @@ var orgSchema = new mongoose.Schema({
     guardianname: String,
     phonenumberg: Number,
     critical: String,
-    condition: String
+    condition: String,
+    affected:String,
+    
 });
 
 module.exports = mongoose.model("organisationData", orgSchema);

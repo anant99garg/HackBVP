@@ -1,2 +1,212 @@
-<% include header %>
-<h1>Hello there</h1>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DAVA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        #map {
+            height: calc(100vh - 70px);
+            margin-top: 5px;
+        }
+
+        #details {
+            height: calc(100vh - 70px);
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+        <% include header.ejs %>
+<div>
+
+    <div class="row">
+        <div class="col s12" id="">
+
+            <div class="row">
+                <div class="col s6 z-depth-4" id="map">
+                </div>
+
+                <div class="col s6" id="details">
+
+                    <div class="container">
+                        
+                        <!-- Loop start -->
+                        <div class="card">
+                            <div class="card-content">
+                            <span class="card-title red-text">
+                                NAME_OF_AFFECTED_HOSPITAL
+                            </span>
+                                AFFECTED HOSPITAL ADDRESS
+                                <hr>
+                                Suggested move to: <span class="green-text">NAME_OF_NEARBY_HOSPITAL</span> <br>
+                                MOVING_TO_ADDRESS <br> <br>
+                                Distance to suggested hospital: DISTANCE (in KM)<br>
+                                Total Patients: 122 <br>
+                                Critical Patients: <span class="red-text">445</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Loop end -->
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        crossorigin="anonymous"></script>
+<script>
+    function initMap() {
+
+        let api_key = "AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg";
+
+        let uluru = {lat: 28.675472, lng: 77.112836};
+        // The map, centered at Uluru
+        let map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 15, center: uluru});
+        // The marker, positioned at Uluru
+        let marker = new google.maps.Marker({position: uluru, map: map});
+    }
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg&callback=initMap"></script>
+        <script>
+
+                let affected = [
+                    {
+                        name: "Delhi Heart Hospital, Jagriti Enclave, Anand Vihar, Delhi, India",
+                        lat: "28.653229",
+                        lng: "77.308601",
+                    },
+            
+                    {
+                        name: "Nighasan Hospital, Nighasan, Uttar Pradesh, India",
+                        lat: "28.231674",
+                        lng: "80.862534",
+                    },
+            
+                    {
+                        name: "Apple Hospital, Surat, Gujarat, India",
+                        lat: "21.182947",
+                        lng: "72.831581",
+                    },
+                ];
+            
+                let non_affected = [
+                    {
+                        name: "Primary Health Centre, Gejjalagere, Karnataka, India",
+                        lat: "12.571047",
+                        lng: "77.001183"
+                    },
+            
+                    {
+                        name: "32 Smile Stone Dental Clinic, New Delhi, Delhi, India",
+                        lat: "28.575552",
+                        lng: "77.262192"
+                    },
+            
+                    {
+                        name: "Veterinary Polyclinic, Hoshiarpur, Punjab, India",
+                        lat: "31.524620",
+                        lng: "75.902008"
+                    },
+            
+                    {
+                        name: "Hashmika Child Clinic, Visakhapatnam, Andhra Pradesh, India",
+                        lat: "17.733288",
+                        lng: "83.275429"
+                    },
+            
+                    {
+                        name: "Padmini Nursing Home, Chetpet, Chennai, Tamil Nadu, India",
+                        lat: "13.072790",
+                        lng: "80.234421"
+                    },
+            
+                    {
+                        name: "Subham Diagnostic & Polyclinic, Rajhati, West Bengal, India",
+                        lat: "22.674788",
+                        lng: "87.827484"
+                    },
+            
+                    {
+                        name: "Smile Art Dental Clinic, Ravet, Pimpri-Chinchwad, Maharashtra, India",
+                        lat: "18.643318",
+                        lng: "73.756042"
+                    },
+            
+                    {
+                        name: "Asilo Hospital, Mapusa, Goa, India",
+                        lat: "15.589379",
+                        lng: "73.816574"
+                    }
+                ];
+            
+                non_affected = [];
+            
+                let rad = function(x) {
+                    return x * Math.PI / 180;
+                };
+            
+            
+                let getDistance = function(p1, p2) {
+                    let R = 6378137; // Earth’s mean radius in meter
+                    let dLat = rad(p2.lat - p1.lat);
+                    let dLong = rad(p2.lng - p1.lng);
+                    let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                        Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat)) *
+                        Math.sin(dLong / 2) * Math.sin(dLong / 2);
+                    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                    return R * c; // returns the distance in meter
+                };
+            
+            
+                function getMinDistanceArray(affected_array, non_affected_array) {
+            
+                    let distance_array = [];
+            
+                    affected_array.map(affected_place => {
+            
+                        let min_distance_place = {
+                            name: affected_place.name,
+                            distance: Infinity,
+                            nearByPlace: "NO PLACE FOUND"
+                        };
+            
+                        non_affected_array.map(non_affected_place => {
+            
+                            let calculated_distance = Math.round(getDistance(affected_place, non_affected_place)/1000);
+                            if(calculated_distance<min_distance_place.distance){
+                                min_distance_place.distance = calculated_distance;
+                                min_distance_place.nearByPlace = non_affected_place.name
+                            }
+                        });
+            
+                        distance_array.push(min_distance_place)
+                    });
+            
+                    return distance_array;
+                }
+            let distance_array = getMinDistanceArray(affected, non_affected)
+                console.log(distance_array);
+            
+            </script>
+</body>
+</html>
