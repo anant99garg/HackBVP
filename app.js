@@ -100,10 +100,10 @@ NewUser.register(new_user,req.body.password, function(err, newUser){
 ///////////////////////////////////////
 
 
-app.get("/organisation",function(req, res){
-    app.render("organisation")
+app.get("/org",function(req, res){
+    res.render("org")
 });
-app.post("/organisation", function (req, res) {
+app.post("/org", function (req, res) {
     var name = req.body.name;
     var condition = req.body.condition;
     var guardianname = req.body.guardianname;
@@ -114,7 +114,7 @@ organisationData.create(new_user, function(err, organisationD){
         console.log(err);
         res.redirect("Something went wrong");
     } 
-    res.redirect('/organisation',{organisationD:organisationD})
+    res.redirect('/org',{organisationD:organisationD})
 });
 });
 

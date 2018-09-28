@@ -4,7 +4,7 @@ var passportLocalMongoose = require('passport-local-mongoose');
 var organisationSchema = new mongoose.Schema({
     name: String,
     condition: String,
-    critical: Boolean,
+    critical: String,
     guardianname: String,
     phonenumber: Number
 });
