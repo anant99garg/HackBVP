@@ -64,7 +64,7 @@ app.get("/login",function(req, res){
 })
 app.post("/login", passport.authenticate("local",
     {
-        successRedirect: "/",
+        successRedirect: "/org",
         failureRedirect: "/login"
     }), function (req, res) {
     });
@@ -83,8 +83,10 @@ app.post("/signup", function (req, res) {
     var organisation = req.body.organisation;
     var email = req.body.email;
     var address = req.body.address;
+    var longitude = req.body.longitude;
+    var latitude = req.body.latitude;
     var phonenumber = req.body.phonenumber; 
-    var new_user ={username:username,name:name, phonenumber:phonenumber,organisation:organisation,email:email,address:address};
+    var new_user ={username:username,latitude:latitude,longitude:longitude,name:name, phonenumber:phonenumber,organisation:organisation,email:email,address:address};
 NewUser.register(new_user,req.body.password, function(err, newUser){
     if (err){
         console.log(err);
@@ -103,7 +105,7 @@ NewUser.register(new_user,req.body.password, function(err, newUser){
 ///////////////////////////////////////
 
 
-app.get("/org",function(req, res){
+app.get("/org",isLoggedIn,function(req, res){
     organisationData.find({},function(err, organisationD1){
         if (err){
             res.render('index');
@@ -113,7 +115,7 @@ app.get("/org",function(req, res){
         };
     });
 });
-app.post("/org", function (req, res) {
+app.post("/org", isLoggedIn,function (req, res) {
     var namep = req.body.namep;
     var condition = req.body.condition;
     var guardianname = req.body.guardianname;
