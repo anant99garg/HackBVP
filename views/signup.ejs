@@ -1,80 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Signup</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-	<!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <title>DAVA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+
+            width: 100vw;
+            height: 100vh;
+
+        }
+
+        @-webkit-keyframes AnimationName {
+            0% {
+                background-position: 7% 0
+            }
+            50% {
+                background-position: 94% 100%
+            }
+            100% {
+                background-position: 7% 0
+            }
+        }
+
+        @-moz-keyframes AnimationName {
+            0% {
+                background-position: 7% 0
+            }
+            50% {
+                background-position: 94% 100%
+            }
+            100% {
+                background-position: 7% 0
+            }
+        }
+
+        @keyframes AnimationName {
+            0% {
+                background-position: 7% 0
+            }
+            50% {
+                background-position: 94% 100%
+            }
+            100% {
+                background-position: 7% 0
+            }
+        }
+        #patient{
+      overflow: scroll;
+      height: calc(100vh - 60px);
+    }
+    </style>
+
 </head>
 <body>
-    <% include header.ejs %>
+        
+<div>
+        <nav class="grey darken-3">
+                <div class="container">
+                   <div class="nav-wrapper">
+                          <a href="#!" class="brand-logo">DAVA</a>
+                          <ul class="right hide-on-med-and-down">
+                            <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="#!">login</a></li>
+                            <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="#!">signup </a></li>
+                          </ul>
+                  </div>
+                </div>
+              </nav>
     <div class="row">
-        <div class="flow-text center-align red-text darken-2">Enter your details</div>
-      </div>
-      <div class="row">
-        <form class="col s12 l6 offset-l3" action="/signup" method="POST">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="username" type="text" name="username" class="validate" required>
-              <label for="username">Username</label>
+        <div class="col s12 m6 offset-m3">
+            <div class="card" style="background: #e9ecef;">
+                <div class="card-content">
+                    <span class="card-title">
+                        Sign UP
+                    </span>
+                    <div class="row">
+                        <form class="col s12" action="/signup" method="POST">
+                            <div class="row">
+                                <div class="input-field col s12 m6">
+                                    <input id="user_id" type="text" name="username" class="validate">
+                                    <label for="user_id">Chose a User ID</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="name" type="text" name="organisation" class="validate">
+                                    <label for="name">Name of Organisation</label>
+                                </div>
+                                <div class="input-field col s12 m12">
+                                    <textarea id="address" name="address" class="materialize-textarea"></textarea>
+                                    <label for="address">Full Address</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="phone" type="text" name="phonenumber" class="validate">
+                                    <label for="phone">Phone</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="email" type="text" name="email" class="validate">
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="col s12" style="height: 300px" id="map">
+
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="lat" type="text" name="latitude" class="validate">
+                                    <label for="lat">Latitude</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="lng" type="text" name="longitude" class="validate">
+                                    <label for="lng">Longitude</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="password" type="password" name="password" class="validate">
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="col s12">
+                                    <button class="btn btn-flat btn-large blue white-text"> SIGN UP</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="name" type="text" name="name" class="validate" required>
-              <label for="name">Name</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password" type="password" name="password" class="validate" required>
-              <label for="password">Password</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" name="email" class="validate" required>
-              <label for="email">Email</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="icon_telephone" type="tel" name="phonenumber" class="validate" required>
-              <label for="icon_telephone">Telephone</label>
-            </div>
-         </div>
-         <div class="input-field col s12">
-          <input id="name" type="text" name="organisation" class="validate" required>
-          <label for="name">Organisation</label>
         </div>
-         <div class="row">
-            <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea" name="address" required></textarea>
-              <label for="textarea1">Address</label>
-            </div>
-          </div>
-         <div class="row">
-          <div class="center-align">
-            <button class="btn">Submit</button>
-          </div>
-         </div>
-     
-        </form>
-      </div>
+    </div>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+<script>
+    function initMap() {
 
+        let api_key = "AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg";
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
 
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-   <!-- Compiled and minified JavaScript -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-   <script>
-       $(document).ready(function(){
-	      
-	   } );
-   </script>
+        function showPosition(position) {
+            console.log("current");
+
+            let pos = {lat: position.coords.latitude, lan: position.coords.longitude};
+            let map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 15, center: uluru});
+            // The marker, positioned at Uluru
+            let marker = new google.maps.Marker({position: pos, map: map});
+        }
+        // The location of Uluru
+        $('#address').on('change', () => {
+            let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI($("#address").val())}&key=${api_key}`;
+            console.log(url);
+            fetch(url)
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    console.log(responseJson);
+                    let uluru = responseJson.results[0].geometry.location;
+                    // The map, centered at Uluru
+                    $("#lat").val(uluru.lat);
+                    $("#lng").val(uluru.lng);
+                    M.updateTextFields();
+                    let map = new google.maps.Map(
+                        document.getElementById('map'), {zoom: 15, center: uluru});
+                    // The marker, positioned at Uluru
+                    let marker = new google.maps.Marker({position: uluru, map: map});
+                })
+
+        });
+        let uluru = {lat: 28.675472, lng: 77.112836};
+        // The map, centered at Uluru
+        let map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 15, center: uluru});
+        // The marker, positioned at Uluru
+        let marker = new google.maps.Marker({position: uluru, map: map});
+    }
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg&callback=initMap"></script>
 </body>
 </html>

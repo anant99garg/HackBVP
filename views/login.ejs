@@ -4,44 +4,30 @@
     <meta charset="UTF-8">
     <title>DAWA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- <style>
-        body {
-            margin: 0;
-        }
-
-        #map {
-            height: 50vh;
-            width: 100vw;
-        }
-    </style> -->
+   
 </head>
 <body>
-<<<<<<< HEAD
 
-    <% include header.ejs %>
-  <div class="section"></div>
-  <main>
-    <center>
-      <div class="section"></div>
+        <nav class="grey darken-3" >
+                <div class="container">
+                   <div class="nav-wrapper">
+                          <a href="#!" class="brand-logo">DAVA</a>
+                          <ul class="right hide-on-med-and-down">
+                            <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="#!">login</a></li>
+                            <li><a class="waves-effect waves-light btn blue-grey lighten-3"href="#!">signup </a></li>
+                          </ul>
+                  </div>
+                </div>
+              </nav>
+ 
 
-      <h5 class="indigo-text">Please, login into your account</h5>
-      <div class="section"></div>
-=======
->>>>>>> 792886d6cf2891897348fe9068c066ec5eedddac
-
-<!-- Make map half screen -->
-<!-- list of hospital to shift -->
-<!-- parallel sign in process -->
-
-<main>
-    <div id="map"></div>
-
-    <div class="row">
-        <div class="col s12 m3 push-m9">
+    <div class="container">
+	   <div class="row">
+        <div class="col s12 m6 offset-m2">
             <div class="">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title">Sign IN</span>
+                        <span class="card-title blue-text lighten-2">Please, login into your account</span>
                         <div class="row">
                             <form class="col s12" action="/login" method="POST">
                                 <div class="row">
@@ -54,26 +40,21 @@
                                         <label for="password">Password</label>
                                     </div>
                                     <div class="col s12">
-                                        <button class="btn btn-flat btn-large blue white-text"> SIGN iN</button>
+                                        <button class="btn btn-flat btn-large blue white-text"> Log In</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="card-action">
-                        <a href="/signup">Sign UP</a>
+                    <div class="card-action ">
+                        <a href="/signup"class="blue-text lighten-2">Sign Up</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col s12 m9 pull-m3">
-            <div class="row">
-
-            </div>
-        </div>
     </div>
 
-</main>
+	</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <!-- <script>
     // Initialize and add the map
