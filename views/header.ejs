@@ -1,4 +1,31 @@
 <nav class="grey darken-3">
+<<<<<<< HEAD
+        <div class="container">
+            <%if(userU){%>
+           <div class="nav-wrapper">
+                  <a href="/" class="brand-logo">DAVA</a>
+                  <ul class="right hide-on-med-and-down">
+                      
+                    <li><a class="waves-effect waves-light btn blue-grey darken-1"href="/logout">logout</a></li>
+                    <li><a class="waves-effect waves-light btn blue-grey darken-1"href="signup">signup </a></li>
+                    <li><a href="#" class="brand-logo flow-text white-text"><%= userU.organisation %></a></li>
+                  </ul>
+            
+          </div>
+          <%}else{%>
+          <div class="nav-wrapper">
+              <a href="#!" class="brand-logo">DAVA</a>
+              <ul class="right hide-on-med-and-down">
+                  <li><a class="waves-effect waves-light btn blue-grey darken-1"href="/login">login</a></li>
+                <li><a class="waves-effect waves-light btn blue-grey darken-1"href="/signup">signup </a></li>
+                <li><a href="#" class="brand-logo flow-text blue-grey-text darken-1"><%= userU.organisation %></a></li>
+              </ul>
+              
+      </div>
+      <%}%>
+        </div>
+      </nav>
+=======
   <div class="container">
     <%if(userU){%>
     <div class="nav-wrapper">
@@ -21,3 +48,4 @@
     <%}%>
   </div>
 </nav>
+>>>>>>> 69bc930fec854fa933cf1eb676c1a5a4fbf8a45e
