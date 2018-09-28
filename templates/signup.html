@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <style>
-        html{
+        html {
             background: linear-gradient(110deg, #a24bcf, #4b79cf, #4bc5cf);
             background-size: 600% 600%;
 
@@ -18,7 +18,7 @@
             animation: AnimationName 30s ease infinite;
         }
 
-        body{
+        body {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -30,19 +30,39 @@
         }
 
         @-webkit-keyframes AnimationName {
-            0%{background-position:7% 0}
-            50%{background-position:94% 100%}
-            100%{background-position:7% 0}
+            0% {
+                background-position: 7% 0
+            }
+            50% {
+                background-position: 94% 100%
+            }
+            100% {
+                background-position: 7% 0
+            }
         }
+
         @-moz-keyframes AnimationName {
-            0%{background-position:7% 0}
-            50%{background-position:94% 100%}
-            100%{background-position:7% 0}
+            0% {
+                background-position: 7% 0
+            }
+            50% {
+                background-position: 94% 100%
+            }
+            100% {
+                background-position: 7% 0
+            }
         }
+
         @keyframes AnimationName {
-            0%{background-position:7% 0}
-            50%{background-position:94% 100%}
-            100%{background-position:7% 0}
+            0% {
+                background-position: 7% 0
+            }
+            50% {
+                background-position: 94% 100%
+            }
+            100% {
+                background-position: 7% 0
+            }
         }
     </style>
 
@@ -72,6 +92,9 @@
                                     <textarea id="address" class="materialize-textarea"></textarea>
                                     <label for="address">Full Address</label>
                                 </div>
+                                <div class="col s12" id="map" style="height: 300px">
+
+                                </div>
                                 <div class="col s12">
                                     <button class="btn btn-flat btn-large blue white-text"> SIGN iN</button>
                                 </div>
@@ -85,5 +108,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArIc5CsWpfhHO80jr1vhzCslESf0db97w&callback=initialize"></script>
 </body>
 </html>
