@@ -102,12 +102,12 @@
 
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input id="lan" type="text" class="validate">
-                                    <label for="lan">Latitude</label>
+                                    <input id="lat" type="text" class="validate">
+                                    <label for="lat">Latitude</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input id="lag" type="text" class="validate">
-                                    <label for="lag">Longitude</label>
+                                    <input id="lng" type="text" class="validate">
+                                    <label for="lng">Longitude</label>
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <input id="password" type="password" class="validate">
@@ -130,7 +130,45 @@
         crossorigin="anonymous"></script>
 <script>
     function initMap() {
+
+        let api_key = "AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg";
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            console.log("current");
+
+            let pos = {lat: position.coords.latitude, lan: position.coords.longitude};
+            let map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 15, center: uluru});
+            // The marker, positioned at Uluru
+            let marker = new google.maps.Marker({position: pos, map: map});
+        }
         // The location of Uluru
+        $('#address').on('change', () => {
+            let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI($("#address").val())}&key=${api_key}`;
+            console.log(url);
+            fetch(url)
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    console.log(responseJson);
+                    let uluru = responseJson.results[0].geometry.location;
+                    // The map, centered at Uluru
+                    $("#lat").val(uluru.lat);
+                    $("#lng").val(uluru.lng);
+                    M.updateTextFields();
+                    let map = new google.maps.Map(
+                        document.getElementById('map'), {zoom: 15, center: uluru});
+                    // The marker, positioned at Uluru
+                    let marker = new google.maps.Marker({position: uluru, map: map});
+                })
+
+        });
         let uluru = {lat: 28.675472, lng: 77.112836};
         // The map, centered at Uluru
         let map = new google.maps.Map(
@@ -139,42 +177,9 @@
         let marker = new google.maps.Marker({position: uluru, map: map});
     }
 
-    marker = new google.maps.Marker(
-        {
-            map:map,
-            draggable:true,
-            animation: google.maps.Animation.DROP,
-            position: results[0].geometry.location
-        });
-    google.maps.event.addListener(marker, 'dragend', function()
-    {
-        geocodePosition(marker.getPosition());
-    });
-
-    function geocodePosition(pos)
-    {
-        geocoder = new google.maps.Geocoder();
-        geocoder.geocode
-        ({
-                latLng: pos
-            },
-            function(results, status)
-            {
-                if (status == google.maps.GeocoderStatus.OK)
-                {
-                    $("#mapSearchInput").val(results[0].formatted_address);
-                    $("#mapErrorMsg").hide(100);
-                }
-                else
-                {
-                    $("#mapErrorMsg").html('Cannot determine address at this location.'+status).show(100);
-                }
-            }
-        );
-    }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArIc5CsWpfhHO80jr1vhzCslESf0db97w&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg&callback=initMap"></script>
 </body>
 </html>
