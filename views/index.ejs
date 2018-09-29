@@ -34,6 +34,7 @@
                 <div class="col s6" id="details">
                     <div class="container">
                         <div id="hospital">
+                            <div class="flow-text black-text">Affected Area</div>
                         </div>
                     </div>
                 </div>
@@ -47,21 +48,44 @@
 
             let api_key = "AIzaSyBwuOwr2YegafeShbyDhDbGHt9JS8_TXsg";
 
-            let uluru = {
-                lat: 28.675472,
-                lng: 77.112836
-            };
-            // The map, centered at Uluru
-            let map = new google.maps.Map(
-                document.getElementById('map'), {
-                    zoom: 15,
-                    center: uluru
-                });
-            // The marker, positioned at Uluru
-            let marker = new google.maps.Marker({
-                position: uluru,
-                map: map
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: {
+                    lat: 28.561941,
+                    lng: 77.282897
+                },
+                mapTypeId: 'terrain'
             });
+
+            // Define the LatLng coordinates for the polygon's path.
+            var triangleCoords = [{
+                    lat: 28.591888,
+                    lng: 77.251
+                },
+                {
+                    lat: 28.524438,
+                    lng: 77.251312
+                },
+                {
+                    lat: 28.525155,
+                    lng: 77.340488
+                },
+                {
+                    lat: 28.596506,
+                    lng: 77.307059
+                },
+            ];
+
+            // Construct the polygon.
+            var bermudaTriangle = new google.maps.Polygon({
+                paths: triangleCoords,
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.25
+            });
+            bermudaTriangle.setMap(map);
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -234,20 +258,19 @@
             let distance = item.distance;
 
             output =
-                ` <div class="card">
+                ` 
+                   <div class="card">
+                            
                             <div class="card-content">
-                            <span class="card-title red-text" id="affected_name" >
+                            <span class="card-title black-text" id="affected_name" >
                                 ${NAME_OF_AFFECTED_HOSPITAL}
                             </span>
-                                <hr>
-                                 <br>
                                 Distance to suggested hospital: <span id="distance">${distance}</span> KM
                                 <br>
-                                Total Patients: 122 <br>
-                                Critical Patients: <span class="red-text">445</span>
+                                Suggested to move: <span class="green-text" id="unaffected_name">${NAME_OF_NEARBY_HOSPITAL}</span>
                             </div>
-                       Suggested move to: <span class="green-text" id="unaffected_name">${NAME_OF_NEARBY_HOSPITAL}</span> <br>
-                                MOVING_TO_ADDRESS <br> </div>`;
+             
+                         </div>`;
 
             document.getElementById("hospital").innerHTML += output;
         })

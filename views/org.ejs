@@ -21,101 +21,20 @@
 <body>
 
     <% include header.ejs %>
-
-<<<<<<< HEAD
-<main>
-  
-    <div class="row">
-        <div class="col s12 m8" id="xyz">
-                <div class="col l8">
-                        <h3>
-                          All Admitted Patient
-                        </h3>
-                </div>
-                <div class ="col l4">
-                    <a href="/" class="btn red lighten-1"style="margin:30px;border-radius:5px;">Go to dashboard</a>
-                </div>
-                
-
-				<table>
-				<thead>
-				  <tr>
-					  <th>Name</th>
-					  <th>Guadian Name</th>
-					  <th>Phone No.</th>
-					  <th>Critical</th>
-				  </tr>
-				</thead>
-
-				<tbody>
-				<%organisationD2.forEach(function(organisationD3){%>
-				  <tr>
-					<td><%= organisationD3.namep%></td>
-					<td><%= organisationD3.guardianname%></td>
-					<td><%= organisationD3.phonenumberg%></td>
-					<td><%= organisationD3.critical%></td>
-				  </tr>
-				 <%})%> 
-				</tbody>
-				</table>
-        </div>
-        <div class="col s12 m4">
-
-            <h3>
-                Mark YourSelf
-            </h3>
-            <button class="btn btn-large red accent-2 white-text btn-flat" style="border-radius:10px">We Are UnSafe</button>
-            <button class="btn btn-large teal accent-3 white-text btn-flat"style="border-radius:10px">We Are Safe</button>
-            <hr>
-            <!--card-->
-            <div class="card">
-                <div class="card-content">
-                                <span class="card-title">
-                                     Admit New patient
-                                </span>
-                                
-                    <div class="row">
-                        
-                        <form class="col s12" action="/org" method="POST">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="name" type="text" name="namep" class="validate">
-                                    <label for="name">Name</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input id="g_name" type="text" name="guardianname" class="validate">
-                                    <label for="g_name">Guardian Name</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input id="phone" type="text" name="phonenumberg" class="validate">
-                                    <label for="phone">Phone Number</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input id="state" type="text" name="condition" class="validate">
-                                    <label for="state">General Medical Condition</label>
-                                </div>
-                                <div class="col s12">
-                                    Critical:
-                                    <label>
-                                        <input name="critical" type="radio" value="yes" name="critical" checked/>
-                                        <span>yes</span>
-                                    </label>
-                                    <label>
-                                        <input name="critical" type="radio" value="no" name="critical" checked/>
-                                        <span>no</span>
-                                    </label>
-                                    <br>
-                                    <br>
-                                </div>
-                                <div class="col s12">
-                                    <button class="btn btn-flat btn-large blue white-text">Add</button>
-=======
     <main>
+
         <div class="row">
             <div class="col s12 m8" id="xyz">
-                <h3>
-                    All Admitted Patient
-                </h3>
+                <div class="col l8">
+                    <h3>
+                        All Admitted Patient
+                    </h3>
+                </div>
+                <div class="col l4">
+                    <a href="/" class="btn red lighten-1" style="margin:30px;border-radius:5px;">Go to dashboard</a>
+                </div>
+
+
                 <table>
                     <thead>
                         <tr>
@@ -125,6 +44,7 @@
                             <th>Critical</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <%organisationD2.forEach(function(organisationD3){%>
                         <tr>
@@ -146,20 +66,22 @@
                 </table>
             </div>
             <div class="col s12 m4">
+
                 <h3>
                     Mark YourSelf
                 </h3>
-                <button class="btn btn-large red accent-2 white-text btn-flat" style="border-radius:10px">Are you
-                    affected</button>
-                <button class="btn btn-large teal accent-3 white-text btn-flat" style="border-radius:10px">Are you
-                    unaffected</button>
+                <button class="btn btn-large red accent-2 white-text btn-flat" style="border-radius:10px">We Are UnSafe</button>
+                <button class="btn btn-large teal accent-3 white-text btn-flat" style="border-radius:10px">We Are Safe</button>
                 <hr>
+                <!--card-->
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title">
                             Admit New patient
                         </span>
+
                         <div class="row">
+
                             <form class="col s12" action="/org" method="POST">
                                 <div class="row">
                                     <div class="input-field col s12">
@@ -194,8 +116,6 @@
                                     <div class="col s12">
                                         <button class="btn btn-flat btn-large blue white-text">Add</button>
                                     </div>
->>>>>>> 69bc930fec854fa933cf1eb676c1a5a4fbf8a45e
-                                </div>
                             </form>
                         </div>
                     </div>
